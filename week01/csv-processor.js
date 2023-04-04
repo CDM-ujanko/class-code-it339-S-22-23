@@ -22,15 +22,17 @@ function processCsv(str) {
 
     return data;
 }
+    
 
-fs.watchFile(process.argv[2], (buff, processCsv) => {
+fs.watchFile(process.argv[2], (curr, prev) => {
     // if (err) {
     //     console.error(err);
     //     return;
     // }
-    console.log(buff);
+    console.log(curr);
 
-    let data = processCsv(buff.toString());
+    let stringData = fs.readFileSync(process.argv[2]).toString();
+    let data = processCsv(stringData);
     let opt = process.argv[3];
     if (opt  === 'sum') {
         let sum = 0;
