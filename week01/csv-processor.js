@@ -22,7 +22,7 @@ function processCsv(str) {
 
     return data;
 }
-    
+
 
 fs.watchFile(process.argv[2], (curr, prev) => {
     // if (err) {
