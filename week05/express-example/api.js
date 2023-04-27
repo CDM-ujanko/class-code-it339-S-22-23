@@ -1,5 +1,6 @@
 import { Router } from "express";
-import data from './data/data.js'
+// import data from './data/data.js'
+import db from './data/database-connector.js';
 
 const router = new Router();
 
@@ -8,11 +9,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/student', (req, res) => {
-    res.json(data);
+    res.json(db.list());
 });
 
-router.get('/student/:id', (req, res) => {
-    let user = data.find((u) => u.index === parseInt(req.params.id));
+router.get('/student/:index', (req, res) => {
+    let index = parseInt(req.params.index);
+    let user = db.find(index);
     if (user) {
         res.json(user);
     } else {
@@ -22,27 +24,15 @@ router.get('/student/:id', (req, res) => {
 
 router.post('/student', (req, res) => {
     let student = req.body;
-    student.index = data.length;
-    data.push(student)
-    res.json(student);
+    res.json(db.create(student));
 });
 
 router.put('/student', (req, res) => {
-    let student = req.body;
-    let index = data.findIndex((u) => u.index === parseInt(student.index));
-    if (index !== -1) {
-        data[index] = student;
-    } else {
-        data.push(student)
-    }
-
-    res.json(student);
+    res.json(db.update(req.body));
 });
 
 router.delete('/student/:id', (req, res) => {
-    let index = data.findIndex((u) => u.index === parseInt(req.params.id));
-    if (index !== -1) {
-        data.splice(index, 1);
+    if (db.delete(parseInt(req.params.id))) {
         res.json('OK!');
     } else {
         res.status(404).json('Invalid id!');
