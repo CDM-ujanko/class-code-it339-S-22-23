@@ -1,5 +1,8 @@
 import express from "express";
 import { engine } from 'express-handlebars';
+import bodyParser from "body-parser";
+
+import api from './api.js';
 
 const app = express();
 const PORT = 3000;
@@ -8,6 +11,11 @@ app.use(express.static('public'));
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
+
+// parse application/json
+app.use(bodyParser.json())
+
+app.use('/api', api);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
@@ -37,12 +45,12 @@ app.get('/todo/add/:item', (req, res) => {
     res.send('OK!');
 })
 
-app.get('/api', (req, res) => {
-    res.json({
-        path: req.path,
-        domain: req.domain,
-        port: req.port,
-        protocol: req.protocol,
-        query: req.query
-    });
-})
+// app.get('/api', (req, res) => {
+//     res.json({
+//         path: req.path,
+//         domain: req.domain,
+//         port: req.port,
+//         protocol: req.protocol,
+//         query: req.query
+//     });
+// })
