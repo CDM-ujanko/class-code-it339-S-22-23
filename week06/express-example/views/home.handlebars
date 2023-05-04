@@ -1,0 +1,17 @@
+<h1>Hello {{ name }}, the time is {{ time }}</h1>
+
+<div class="conteiner row">
+
+    {{#each items}}
+      <div class="col-4">
+            <div class="card">
+                {{ @index }}
+                <img src="{{ picture }}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ this.name }}</h5>
+                    <p class="card-text">{{ about }}</p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
