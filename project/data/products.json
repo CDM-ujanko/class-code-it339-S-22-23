@@ -5,5 +5,17 @@
     "price": 10,
     "description": "A nice Logitech mouse",
     "images": []
+  },
+  {
+    "name": "Keyboard",
+    "price": "123",
+    "description": "Nascetur fermentum fringilla enim sapien tincidunt torquent est vitae feugiat blandit sit senectus massa suscipit mi justo metus aenean mus accumsan quisque vehicula convallis integer cursus felis amet orci dui ridiculus litora aliquam iaculis maximus laoreet finibus gravida erat habitasse consequat viverra ornare ultrices nulla nostra nibh porttitor lorem elementum nam ligula at aptent duis aliquet cras sodales vestibulum ullamcorper cubilia ultricies donec lobortis lacinia primis libero dictum mauris hendrerit pharetra tortor euismod dapibus vivamus risus tempus rhoncus semper dis montes quam praesent vulputate ad condimentum ac volutpat venenatis odio eleifend sagittis arcu augue inceptos egestas adipiscing tempor sociosqu morbi",
+    "key": 1
+  },
+  {
+    "name": "Glass",
+    "price": "3",
+    "description": "Nascetur fermentum fringilla enim sapien tincidunt torquent est vitae feugiat blandit sit senectus massa suscipit mi justo metus aenean mus accumsan quisque vehicula convallis integer cursus felis amet orci dui ridiculus litora aliquam iaculis maximus laoreet finibus gravida",
+    "key": 2
   }
 ]

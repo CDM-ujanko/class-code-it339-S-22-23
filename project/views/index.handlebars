@@ -1,10 +1,10 @@
 <div class="row">
-{{#each cards}}
+{{#each products}}
 <div class="card col-sm-4">
   <div class="card-body">
-    <h5 class="card-title">{{ name }}</h5>
-    <p class="card-text">{{ about }}
-    </p>
+    <h5 class="card-title"><a href="/product/{{key}}">{{ name }}</a></h5>
+    <p class="card-text">{{ description }}</p>
+    <p class="text-right">${{ price }}</small>
   </div>
 </div>
 {{/each}}

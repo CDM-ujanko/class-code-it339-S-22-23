@@ -51,10 +51,11 @@ class Product {
 }
 
 class AbstractProductStore {
-  async create() {}
+  async create(product) {}
   async read (key) {}
-  async update() {}
+  async update(product) {}
   async delete() {}
+  async list() {}
 }
 
 export {
