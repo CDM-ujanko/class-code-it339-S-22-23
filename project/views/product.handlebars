@@ -2,3 +2,12 @@
 <p>{{ product.description }}</p>
 <p>${{ product.price }}</p>
 <a href="/edit/{{ product.key }}">Edit Product</a>
+<a href="/delete/{{ product.key }}" onclick="onDelete(event)">Delete Product</a>
+
+<script>
+  function onDelete(e) {
+    if (!confirm('Are you sure you want to delete this product?')) {
+      e.preventDefault();
+    }
+  }
+</script>

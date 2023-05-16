@@ -1,11 +1,12 @@
 import express from "express";
 import { engine } from 'express-handlebars';
 import { FsProductStore } from "./models/FsStoreItemStore.mjs";
+import { Sqlite3ProductStore } from "./models/Sqlite3ProductStore.mjs";
 
 const app = express();
 const PORT = 3000;
 
-const store = new FsProductStore();
+const store = new Sqlite3ProductStore();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -33,6 +34,11 @@ app.get('/create', (req, res) => {
 app.get('/edit/:id', async (req, res) => {
   let product = await store.read(req.params.id);
   res.render('product-edit', {product, editMode: true});
+});
+
+app.get('/delete/:id', async (req, res) => {
+  await store.delete(req.params.id);
+  res.redirect('/');
 });
 
 app.post('/product', async (req, res) => {

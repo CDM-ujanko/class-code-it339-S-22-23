@@ -54,7 +54,7 @@ class AbstractProductStore {
   async create(product) {}
   async read (key) {}
   async update(product) {}
-  async delete() {}
+  async delete(key) {}
   async list() {}
 }
 

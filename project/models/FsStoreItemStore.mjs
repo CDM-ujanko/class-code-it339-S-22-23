@@ -42,8 +42,17 @@ export class FsProductStore extends AbstractProductStore {
     return product.key;
   }
 
-  async delete() {
+  async delete(key) {
+    let buf = await fs.readFile(FILE_LOCATION);
+    let data = JSON.parse(buf.toString());
+    let index = data.findIndex((p) => p.key == key);
+    if (index === -1) {
+      throw Error('No such product');
+    }
 
+    data.splice(index, 1);
+    await fs.writeFile(FILE_LOCATION, JSON.stringify(data, null, 2));
+    return true;
   }
 
   async list() {
