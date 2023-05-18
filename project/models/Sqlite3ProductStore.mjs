@@ -13,15 +13,14 @@ db.run(`CREATE TABLE IF NOT EXISTS products (
 
 export class Sqlite3ProductStore extends AbstractProductStore {
   async create(product) {
-    await new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       db.run(`INSERT INTO products(name, price, description) VALUES( ?, ?, ?) `,
-       [product.name, product.price, product.description], (err, row) => {
+       [product.name, product.price, product.description], function (err, row) {
         if (err) {
           return reject(err);
         }
 
-        console.log(row);
-        return resolve(row.key);
+        return resolve(this.lastID);
       });
     })
   }
@@ -34,25 +33,25 @@ export class Sqlite3ProductStore extends AbstractProductStore {
         }
 
         return resolve(row);
-      })
+      });
     });
   }
 
   async update(product) {
-    await new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       db.run(`UPDATE products SET name = ?, price = ?, description = ? WHERE key = ?`,
-       [product.name, product.price, product.description, product.key], (err, row) => {
+       [product.name, product.price, product.description, product.key], function (err, row) {
         if (err) {
           return reject(err);
         }
 
-        return resolve(this.lastID);
+        return resolve(product.key);
       });
     })
   }
 
   async delete(key) {
-    await new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       db.run(`DELETE FROM products WHERE key = ?`, key, (err) => {
         if (err) {
           return reject(err);
