@@ -1,6 +1,6 @@
 import express from "express";
 import { engine } from 'express-handlebars';
-import { FsProductStore } from "./models/FsStoreItemStore.mjs";
+import { FsProductStore } from "./models/FsProductStore.mjs";
 import { Sqlite3ProductStore } from "./models/Sqlite3ProductStore.mjs";
 
 const app = express();
