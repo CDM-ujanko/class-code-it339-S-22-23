@@ -2,11 +2,13 @@ import express from "express";
 import { engine } from 'express-handlebars';
 import { FsProductStore } from "./models/FsProductStore.mjs";
 import { Sqlite3ProductStore } from "./models/Sqlite3ProductStore.mjs";
+import { MySqlProductStore } from "./models/MySqlProductStore.mjs";
+import { MongoProductStore } from "./models/MongoProductStore.mjs";
 
 const app = express();
 const PORT = 3000;
 
-const store = new Sqlite3ProductStore();
+const store = new MongoProductStore();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
