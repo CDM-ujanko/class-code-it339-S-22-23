@@ -5,7 +5,7 @@
   "description": "",
   "main": "user-server.js",
   "scripts": {
-    "serve": "nodemon node user-server.js",
+    "serve": "nodemon -r dotenv/config user-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

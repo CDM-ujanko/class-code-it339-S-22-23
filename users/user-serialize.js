@@ -3,13 +3,10 @@ import bcrypt from 'bcrypt';
 
 let port = process.env.MONGODB_PORT,
     host = process.env.MONGODB_HOST,
-    db = process.env.MONGODB_DB;
-
-console.log(`-----------mongodb://${host}:${port}/${db}`);
+    db = process.env.MONGODB_DATABASE;
 
 (async () => {
-  // await mongoose.connect(`mongodb://${host}:${port}/${db}`)
-  await mongoose.connect(`mongodb://localhost:27017/it339-s-22-23`)
+  await mongoose.connect(`mongodb://${host}:${port}/${db}`)
 })()
 
 const Schema = mongoose.Schema;
