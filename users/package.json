@@ -6,7 +6,7 @@
   "main": "user-server.js",
   "scripts": {
     "serve": "nodemon -r dotenv/config user-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r dotenv/config"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,8 @@
     "restify": "^11.1.0"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.22"
   }
 }

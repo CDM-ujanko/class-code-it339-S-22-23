@@ -100,6 +100,10 @@ class User {
       })
     })
   }
+
+  close() {
+    mongoose.disconnect()
+  }
 }
 
 export default new User();
