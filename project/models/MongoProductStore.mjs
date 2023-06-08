@@ -3,9 +3,12 @@ import { AbstractProductStore } from "./Product.mjs"
 
 const MongoClient = mongodb.MongoClient;
 
+let port = process.env.MONGODB_PORT,
+    host = process.env.MONGODB_HOST;
+    
 const db = await (async () => {
-  let client = await MongoClient.connect('mongodb://localhost:27017');
-  return client.db('it339-s-22-23');
+  let client = await MongoClient.connect(`mongodb://${host}:${port}`);
+  return client.db(process.env.MONGODB_DATABASE);
 })();
 
 const products = db.collection('products');

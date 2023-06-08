@@ -16,7 +16,7 @@ import * as userModel from './models/UserSuperagent.mjs';
 const LocalStrategy = passportLocal.Strategy;
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 const store = new MongoProductStore();
 
